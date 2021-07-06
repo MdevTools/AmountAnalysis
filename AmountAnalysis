@@ -1,0 +1,33 @@
+package main
+
+import(
+	"fmt"
+	"strconv"
+)
+
+type AmountAnalysis struct{
+	Action string
+	Status string
+}
+
+
+func main(){
+	var amount int64 = 7654321
+	fmt.Println(NewAmountAnalysis(amount))
+}
+
+func NewAmountAnalysis(amount int64) AmountAnalysis{
+	strAmount := strconv.FormatInt(amount, 10)
+	return 	AmountAnalysis {
+		Action : getAction(strAmount),
+		Status:  getStatus(strAmount),
+	}
+}
+
+func getAction(amount string) string{
+	return amount[:1]
+}
+
+func getStatus(amount string) string{
+	return amount[3:6]
+}
